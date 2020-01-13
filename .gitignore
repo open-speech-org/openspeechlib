@@ -1,6 +1,9 @@
 .idea
 
 openspeechlib_env
+openspeechlib.egg-info
+build
+dist
 
 
 librosa
