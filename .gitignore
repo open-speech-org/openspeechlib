@@ -1,0 +1,11 @@
+.idea
+
+openspeechlib_env
+
+
+librosa
+python_speech_features
+numpy-ml
+Speech_Signal_Processing_and_Classification
+sonopy
+speechpy

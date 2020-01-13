@@ -3,13 +3,11 @@
 - Feature Extraction
   - MFCC
     - [LibRosa](https://librosa.github.io/librosa/generated/librosa.feature.mfcc.html)
-    - [MFCC](https://github.com/IlyaMichlin/MFCC)
+    - [Speech Features](https://github.com/jameslyons/python_speech_features)
     - [Numpy ML](https://github.com/ddbourgin/numpy-ml)
     - [Speech Signal Processing and Classification](https://github.com/gionanide/Speech_Signal_Processing_and_Classification)
-    - [Speaker Identification](https://github.com/GauravWaghmare/Speaker-Identification)
     - [Sonopy](https://github.com/MycroftAI/sonopy)
-    - [Emotion Recognition](https://github.com/x4nth055/emotion-recognition-using-speech)
-    - [Gender Recognition](https://github.com/SuperKogito/Voice-based-gender-recognition)
+    - [SpeechPy](https://github.com/astorfi/speechpy)
   - PLP
   - LFCC
   - WPF
@@ -44,3 +42,10 @@ ROBUST SPEECH RECOGNITION](https://www.eurasip.org/Proceedings/Eusipco/Eusipco20
 
 - Generators
   - [espeak-ng](https://github.com/espeak-ng/espeak-ng)
+  
+  
+- Applications
+  - [Speaker Identification](https://github.com/GauravWaghmare/Speaker-Identification)
+  - [Emotion Recognition](https://github.com/x4nth055/emotion-recognition-using-speech)
+  - [Gender Recognition](https://github.com/SuperKogito/Voice-based-gender-recognition)
+    
