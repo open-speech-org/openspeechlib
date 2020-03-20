@@ -5,10 +5,13 @@ openspeechlib.egg-info
 build
 dist
 
-
+# MFCC
 librosa
 python_speech_features
 numpy-ml
 Speech_Signal_Processing_and_Classification
 sonopy
 speechpy
+
+# Aligners
+sppas
