@@ -4,6 +4,7 @@ openspeechlib_env
 openspeechlib.egg-info
 build
 dist
+__pycache__
 
 # MFCC
 librosa
