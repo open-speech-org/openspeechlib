@@ -12,5 +12,12 @@ class BaseCorpus(metaclass=ABCMeta):
     _arg_pagination = None
 
     @abstractmethod
-    def fetch(self, _from, _to):
+    def fetch(self, _from=None, _to=None, **kwargs):
         raise NotImplementedError("All BaseCorpus Subclasses must implement the fetch method")
+
+    def url_builder(self, **kwargs):
+        return self._api_url.format(**kwargs)
+
+    @staticmethod
+    def kwargs_to_query_params(**kwargs):
+        return "&".join([f"{key}={value}" for key, value in kwargs.items()])
