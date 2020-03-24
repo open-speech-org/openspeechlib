@@ -49,3 +49,11 @@ ROBUST SPEECH RECOGNITION](https://www.eurasip.org/Proceedings/Eusipco/Eusipco20
   - [Emotion Recognition](https://github.com/x4nth055/emotion-recognition-using-speech)
   - [Gender Recognition](https://github.com/SuperKogito/Voice-based-gender-recognition)
     
+### Logging
+
+If you want verbose information of the process please use in your script
+
+```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
+```

@@ -3,6 +3,10 @@ All base functionality to download corpus
 """
 from abc import ABCMeta, abstractmethod
 
+CORPORA_FOLDER = ".openspeechlib/corpora"
+MAX_REQUESTS = 2
+PAGE_SIZE = 50
+
 
 class BaseCorpus(metaclass=ABCMeta):
     _api_url = None
@@ -11,8 +15,17 @@ class BaseCorpus(metaclass=ABCMeta):
     _node_identifier = None
     _arg_pagination = None
 
+    @property
     @abstractmethod
-    def fetch(self, _from=None, _to=None, **kwargs):
+    def corpus_name(self):
+        raise NotImplementedError("All BaseCorpus Subclasses must implement the corpus_name attribute")
+
+    @abstractmethod
+    def fetch_all(self):
+        raise NotImplementedError("All BaseCorpus Subclasses must implement the fetch_all method")
+
+    @abstractmethod
+    def fetch(self, _from, _to, **kwargs):
         raise NotImplementedError("All BaseCorpus Subclasses must implement the fetch method")
 
     def url_builder(self, **kwargs):
