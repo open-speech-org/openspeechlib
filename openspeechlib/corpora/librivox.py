@@ -42,8 +42,7 @@ logging.basicConfig(level=logging.INFO)
 from openspeechlib.corpora.librivox import LibriVox
 lv = LibriVox()
 content = lv.fetch_all()
-all_available_languages = list({x["language"] for x in content})
-print(all_available_languages)
+lv.export_books_by_language()
 ```
     """
 
