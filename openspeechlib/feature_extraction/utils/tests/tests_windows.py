@@ -17,17 +17,9 @@ class TestsWindows(TestCase):
         self.assertEqual(windows.calculate_pad_size(10, 5, 4), 3)
 
     def test_desktop_3(self):
-        self.assertEqual(windows.calculate_pad_size(10, 3, 1), 1)
+        self.assertEqual(windows.calculate_pad_size(10, 3, 1), 2)
 
-    def test_incomplete_window_padding(self):
-        total_signal_length = 32516
-
-        self.assertEqual(windows.calculate_pad_size(total_signal_length, self.window_width, self.window_offset), 284)
 
     def test_incomplete_window_padding_multiple(self):
         total_signal_length = 100
         self.assertEqual(windows.calculate_pad_size(total_signal_length, 10, 5), 5)
-
-    def test_complete_padding(self):
-        total_signal_length = 400
-        self.assertEqual(windows.calculate_pad_size(total_signal_length, self.window_width, self.window_offset), 160)
