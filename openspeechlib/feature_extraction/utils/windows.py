@@ -11,16 +11,17 @@ hamming = windows.hamming
 
 def calculate_pad_size(signal_length, window_width, window_offset):
     useful_space = signal_length % window_offset
-    return int(window_width - useful_space) if useful_space != 0 else window_offset
+    return int(window_width - useful_space) if useful_space != 0 else window_width - window_offset
 
 
 def extract_overlapping_frames_from_signal(signal, window_width, window_offset):
     signal_length = signal.shape[-1]
     # We fill the signal to ensure the last frame has the appropriate length
+    padding_needed = calculate_pad_size(signal_length, window_width, window_offset)
     padded_signal = np.concatenate(
         (
             signal,
-            np.zeros(calculate_pad_size(signal_length, window_width, window_offset))
+            np.zeros(padding_needed)
         )
     )
     padded_signal_length = padded_signal.shape[-1]
@@ -30,16 +31,8 @@ def extract_overlapping_frames_from_signal(signal, window_width, window_offset):
     ).T
     consecutive_indexes_to_add = np.tile(
         np.arange(0, window_width),
-        (padded_signal_length//window_offset, 1)
+        (initial_frame_index.shape[0], 1)
     )
-    print(calculate_pad_size(signal_length, window_width, window_offset))
-    print(padded_signal)
-    print(padded_signal_length)
-    print(initial_frame_index)
-    print(consecutive_indexes_to_add)
     frame_indexes = initial_frame_index + consecutive_indexes_to_add
-    print(frame_indexes)
+
     return padded_signal[frame_indexes]
-
-
-extract_overlapping_frames_from_signal(np.arange(0,10), 5,3)
