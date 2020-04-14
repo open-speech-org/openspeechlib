@@ -24,7 +24,6 @@ def extract_overlapping_frames_from_signal(signal, window_width, window_offset):
             np.zeros(padding_needed)
         )
     )
-    padded_signal_length = padded_signal.shape[-1]
     initial_frame_index = np.tile(
         np.arange(0, signal_length, window_offset),
         (window_width, 1)
