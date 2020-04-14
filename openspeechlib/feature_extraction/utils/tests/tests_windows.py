@@ -1,5 +1,7 @@
 from unittest import TestCase
 
+import numpy as np
+
 from openspeechlib.feature_extraction.utils import windows
 
 
@@ -23,3 +25,32 @@ class TestsWindows(TestCase):
     def test_incomplete_window_padding_multiple(self):
         total_signal_length = 100
         self.assertEqual(windows.calculate_pad_size(total_signal_length, 10, 5), 5)
+
+
+class TestFrames(TestCase):
+    def setUp(self) -> None:
+        self.signal = np.arange(0, 10)
+
+    def test_5_x_3(self):
+        self.assertEqual(
+            windows.extract_overlapping_frames_from_signal(self.signal, 5, 3).shape,
+            (4, 5)
+        )
+
+    def test_5_x_4(self):
+        self.assertEqual(
+            windows.extract_overlapping_frames_from_signal(self.signal, 5, 4).shape,
+            (3, 5)
+        )
+
+    def test_3_x_1(self):
+        self.assertEqual(
+            windows.extract_overlapping_frames_from_signal(self.signal, 3, 1).shape,
+            (10, 3)
+        )
+
+    def test_100_x_5(self):
+        self.assertEqual(
+            windows.extract_overlapping_frames_from_signal(np.arange(0,100), 10, 5).shape,
+            (20, 10)
+        )

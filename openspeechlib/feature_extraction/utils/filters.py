@@ -17,7 +17,7 @@ Taken from Speech an Language Processing by Dan Jurafsky 2nd edition Chapter 9.3
     return np.append(signal[0], signal[1:] - alpha*signal[:-1])
 
 
-def triangular_filter_bank(bins, number_of_filters):
+def triangular_filter_bank(bins, number_of_filters, signal_size):
     """
     Implements a triangular filter to be used as filterbank defined by:
 
@@ -34,7 +34,7 @@ Taken from Spoken Language Processing by Xuedong Huang Chapter 6.5.2
     :param number_of_filters Number of filters to check
     :return:
     """
-    filter_bank = np.zeros([number_of_filters, ])  # This filter bank represents H in our formula
+    filter_bank = np.zeros([number_of_filters, signal_size])  # This filter bank represents H in our formula
     for m in range(number_of_filters):
         for k in range(int(bins[m]), int(bins[m + 1])):
             filter_bank[m, k] = (k - bins[m]) / (bins[m + 1] - bins[m])
