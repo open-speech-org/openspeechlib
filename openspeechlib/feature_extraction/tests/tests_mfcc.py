@@ -4,8 +4,8 @@ from unittest import TestCase
 import numpy as np
 from scipy.io import wavfile
 
-from openspeechlib.feature_extraction.utils.filters import pre_emphasis, triangular_filter_bank
-from openspeechlib.feature_extraction.utils.windows import extract_overlapping_frames_from_signal, hamming
+from openspeechlib.utils.filters import pre_emphasis, triangular_filter_bank
+from openspeechlib.utils.windows import extract_overlapping_frames_from_signal, hamming
 from openspeechlib.feature_extraction.utils.mel_scale import hz_to_mel, mel_to_hz
 from openspeechlib.feature_extraction.utils.delta import delta
 from openspeechlib.feature_extraction.mfcc import MFCC

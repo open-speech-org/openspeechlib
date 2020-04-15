@@ -9,6 +9,13 @@ from scipy.signal import windows
 hamming = windows.hamming
 
 
+def apply_window_function_to_frames(frames, window_function=hamming):
+    if len(frames.shape) != 2:
+        raise ValueError('This functions requires a 2D array')
+    window_values = window_function(frames.shape[1])
+    return np.apply_along_axis(lambda x: x * window_values, 1, frames)
+
+
 def calculate_pad_size(signal_length, window_width, window_offset):
     useful_space = signal_length % window_offset
     return int(window_width - useful_space) if useful_space != 0 else window_width - window_offset
