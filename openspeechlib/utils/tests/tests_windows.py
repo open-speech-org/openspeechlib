@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import numpy as np
 
-from openspeechlib.feature_extraction.utils import windows
+from openspeechlib.utils import windows
 
 
 class TestsWindows(TestCase):
@@ -51,6 +51,20 @@ class TestFrames(TestCase):
 
     def test_100_x_5(self):
         self.assertEqual(
-            windows.extract_overlapping_frames_from_signal(np.arange(0,100), 10, 5).shape,
+            windows.extract_overlapping_frames_from_signal(np.arange(0, 100), 10, 5).shape,
             (20, 10)
+        )
+
+
+class TestApplyFunctionToFrames(TestCase):
+
+    def test_apply_window_function_to_frames_1d_array(self):
+        with self.assertRaises(ValueError):
+            windows.apply_window_function_to_frames(np.arange(0, 10))
+
+    def test_keep_shape(self):
+        array_2D = np.arange(0,25).reshape((5,5))
+        self.assertEqual(
+            array_2D.shape,
+            windows.apply_window_function_to_frames(array_2D).shape
         )

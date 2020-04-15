@@ -1,7 +1,8 @@
 import numpy as np
 
-from openspeechlib.feature_extraction.utils.filters import pre_emphasis
-from openspeechlib.feature_extraction.utils.windows import extract_overlapping_frames_from_signal, hamming
+from openspeechlib.utils.filters import pre_emphasis
+from openspeechlib.utils.windows import extract_overlapping_frames_from_signal, apply_window_function_to_frames
+from openspeechlib.utils.signal import power, replace_zeros_with_almost_zero
 from openspeechlib.feature_extraction.utils.mel_scale import transform_hz_signal_into_mel_scale_using_triangular_filter_banks
 from openspeechlib.feature_extraction.utils.delta import delta
 
@@ -26,14 +27,14 @@ def MFCC(
     :param frequency:
     :param window_width:
     :param window_offset:
+    :param number_of_mel_filters
     :return:
     """
     signal_with_pre_emphasis = pre_emphasis(signal)
     frames = extract_overlapping_frames_from_signal(signal_with_pre_emphasis, window_width, window_offset)
-    hamming_frame = hamming(window_width)
-    windowed_frames = np.apply_along_axis(lambda x: x*hamming_frame, 1, frames)
+    windowed_frames = apply_window_function_to_frames(frames)
     windowed_frames_with_fourier_transform = np.fft.fft(windowed_frames)
-    energy = np.sum(np.square(windowed_frames), axis=1)
+    energy = power(windowed_frames, axis=1)
 
     mel_frames = transform_hz_signal_into_mel_scale_using_triangular_filter_banks(
         windowed_frames_with_fourier_transform,
@@ -41,7 +42,7 @@ def MFCC(
         number_of_mel_filters
     )
 
-    mel_frames_without_zeros = np.where(mel_frames == 0, np.finfo(float).eps, mel_frames)
+    mel_frames_without_zeros = replace_zeros_with_almost_zero(mel_frames)
 
     log_of_mel_frames = np.log(mel_frames_without_zeros)
     inverse_fourier_of_log_frames = np.fft.ifft(log_of_mel_frames)

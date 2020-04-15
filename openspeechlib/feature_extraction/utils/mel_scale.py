@@ -1,6 +1,6 @@
 import numpy as np
 
-from openspeechlib.feature_extraction.utils.filters import triangular_filter_bank
+from openspeechlib.utils.filters import triangular_filter_bank
 
 def hz_to_mel(f):
     """
