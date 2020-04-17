@@ -1,5 +1,13 @@
-# openspeech
+# openspeechlib
 
+This is a package that includes several utilities to extract information from a speech signal, 
+download open speech resources and others related speech activities.
+
+Currently openspeechlib is in active development, if you have suggestion, requests of improvements
+please leave a issue using the  [Github Issue system for this repository](https://github.com/open-speech-org/openspeechcorpus-cli/issues)
+
+
+## Some useful links
 - Feature Extraction
   - MFCC
     - [LibRosa](https://librosa.github.io/librosa/generated/librosa.feature.mfcc.html)
