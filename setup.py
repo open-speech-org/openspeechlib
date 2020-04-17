@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="openspeechlib",
-    version="0.0.0",
+    version="0.0.2",
     description="Useful libraries to process and generate speech",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -26,9 +26,8 @@ setup(
     install_requires=[
         "requests>=2.22.0"
     ],
-    packages=[
-        "openspeechlib",
-    ],
+    packages=find_packages(),
+    include_packagfe_data=True,
     scripts=[
 
     ],
