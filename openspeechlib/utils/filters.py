@@ -1,3 +1,6 @@
+"""
+Utility functions to handle useful filters
+"""
 import numpy as np
 
 

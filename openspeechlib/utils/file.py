@@ -1,5 +1,5 @@
 """
-Utilities for foles
+Utilities for files
 """
 import logging
 import os
