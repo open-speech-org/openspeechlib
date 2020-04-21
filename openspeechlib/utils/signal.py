@@ -24,3 +24,12 @@ def replace_zeros_with_almost_zero(signal):
     :return:
     """
     return np.where(signal == 0, np.finfo(float).eps, signal)
+
+
+def safe_log(signal):
+    """
+    Execute a safe log operation replacing all ceros with almost zeros
+    :param signal:
+    :return:
+    """
+    return np.log(replace_zeros_with_almost_zero(signal))
