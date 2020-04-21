@@ -2,7 +2,7 @@ import numpy as np
 
 from openspeechlib.utils.filters import pre_emphasis
 from openspeechlib.utils.windows import extract_overlapping_frames_from_signal, apply_window_function_to_frames
-from openspeechlib.utils.signal import power, replace_zeros_with_almost_zero
+from openspeechlib.utils.signal import power, safe_log
 from openspeechlib.feature_extraction.utils.mel_scale import transform_hz_signal_into_mel_scale_using_triangular_filter_banks
 from openspeechlib.feature_extraction.utils.delta import delta
 
@@ -42,9 +42,7 @@ def MFCC(
         number_of_mel_filters
     )
 
-    mel_frames_without_zeros = replace_zeros_with_almost_zero(mel_frames)
-
-    log_of_mel_frames = np.log(mel_frames_without_zeros)
+    log_of_mel_frames = safe_log(mel_frames)
     inverse_fourier_of_log_frames = np.fft.ifft(log_of_mel_frames)
 
     first_delta = np.apply_along_axis(delta, 0, inverse_fourier_of_log_frames)
