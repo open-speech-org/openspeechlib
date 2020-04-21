@@ -1,3 +1,7 @@
+"""
+Utility functions to handle some useful operators over signals
+"""
+
 import numpy as np
 
 
