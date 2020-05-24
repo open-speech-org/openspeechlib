@@ -9,7 +9,7 @@ MAX_REQUESTS = 100
 PAGE_SIZE = 50
 
 
-class BaseCorpus(metaclass=ABCMeta):
+class BaseCorpusDownloader(metaclass=ABCMeta):
     _api_url = None
     _format = None
     _node_text = None

@@ -1,12 +1,12 @@
 from unittest import TestCase
 
-from openspeechlib.corpora.librivox import LibriVox, SLIM_FIELDS
+from openspeechlib.corpora.librivox.downloader import Downloader, SLIM_FIELDS
 
 
 class TestsLibriVox(TestCase):
 
     def setUp(self) -> None:
-        self.librivox = LibriVox()
+        self.librivox = Downloader()
 
     def test_default_url_builder(self):
         self.assertEqual(

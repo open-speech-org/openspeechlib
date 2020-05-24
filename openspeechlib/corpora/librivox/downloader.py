@@ -30,7 +30,7 @@ SLIM_FIELDS = [
 ]
 
 
-class LibriVox(base.BaseCorpus):
+class Downloader(base.BaseCorpusDownloader):
     """
     Download LibriBox Information
 
