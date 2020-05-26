@@ -1,7 +1,7 @@
 import os
 import sys
 
-from openspeechcorpus_cli.utils.common_filters import extract_phones_from_word, apply_filters
+from openspeechlib.transcriptions.common import extract_phones_from_word, apply_filters
 
 
 def generate_mlf_files(transcription_folder, output_file):
