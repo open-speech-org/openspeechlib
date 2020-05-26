@@ -2,11 +2,16 @@
 All base functionality to download corpus
 """
 from abc import ABCMeta, abstractmethod
+import os
+
+from openspeechlib.utils import file
+
 
 CORPORA_FOLDER = ".openspeechlib/corpora"
 LAST_FETCHED_URL = "{}_last_fetched_url.txt"
 MAX_REQUESTS = 100
 PAGE_SIZE = 50
+CHUNK_SIZE = 128
 
 
 class BaseCorpusDownloader(metaclass=ABCMeta):
@@ -20,6 +25,14 @@ class BaseCorpusDownloader(metaclass=ABCMeta):
     @abstractmethod
     def corpus_name(self):
         raise NotImplementedError("All BaseCorpus Subclasses must implement the corpus_name attribute")
+
+    @property
+    def corpus_folder(self):
+        return os.path.join(
+            file.get_home_folder(),
+            CORPORA_FOLDER,
+            self.corpus_name
+        )
 
     @abstractmethod
     def fetch_all(self, remember_cache=True):

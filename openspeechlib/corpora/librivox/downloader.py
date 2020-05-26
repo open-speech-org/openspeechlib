@@ -51,13 +51,6 @@ lv.export_books_by_language()
     corpus_name = "librivox"
     _books = list()
 
-    @property
-    def corpus_folder(self):
-        return os.path.join(
-            file.get_home_folder(),
-            base.CORPORA_FOLDER,
-            self.corpus_name
-        )
 
     @property
     def _last_successful_url_file(self):
