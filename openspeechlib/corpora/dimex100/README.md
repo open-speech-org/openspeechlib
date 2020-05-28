@@ -14,6 +14,10 @@ Luis A. Pineda, Hayde Castellanos, Javier Cuétara, Lucian Galescu, Janet Juáre
 
 Luis A. Pineda, Luis Villaseñor Pineda, Javier Cuétara, hayde Castellanos, and Ivonne López. [DIMEx100: A New Phonetic and Speech Corpus for Mexican Spanish](http://turing.iimas.unam.mx/~luis/DIME/DIMEx100/DIMEx100-LNAI3315.pdf) , IBERAMIA 2004, LNAI 2215, pp. 974-983m 2004.
 
+## Manual Download
+
+To download the corpus manually, please visit the official site [official site](http://turing.iimas.unam.mx/~luis/DIME/CORPUS-DIMEX.html)
+
 ## LICENSE
 
 Corpus DIMEx100 is available free of charge for academic purposes exclusively.
