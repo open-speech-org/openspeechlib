@@ -1,5 +1,14 @@
 # Google TTS Latin American
 
+## Information
+
+| | |
+|-|-|
+|Length| - |
+|Speakers| - |
+|Speech Type| - |
+| Annotation Level | Utterance |
+
 ## Cite
 
 If you're using this corpus please cite the source
