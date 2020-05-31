@@ -4,8 +4,10 @@
 
 | | |
 |-|-|
-|Length|5
-|Speakers|50
+|Length|5 hours|
+|Speakers|50|
+|Speech Type| Read |
+|Annotation level| Phoneme |
 
 
 ## CITE
