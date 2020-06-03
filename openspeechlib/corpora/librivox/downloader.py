@@ -46,7 +46,7 @@ lv.export_books_by_language()
 ```
     """
 
-    _api_url = "https://librivox.org/api/feed/audiobooks?{}"
+    _api_url = "https://librivox.org/api/feed/audiobooks"
     _last_successful_url = None
     corpus_name = "librivox"
     _books = list()
@@ -145,11 +145,11 @@ lv.export_books_by_language()
         )
         LOGGER.info(f"Total records exported {len(books)}")
 
-    def url_builder(self, **kwargs):
+    def url_builder(self, path='/', **kwargs):
         merged_kwargs = {**DEFAULT_ARGS, **kwargs}
         if "fields" in merged_kwargs:
             merged_kwargs["fields"] = "{{{fields}}}".format(fields=",".join(merged_kwargs["fields"]))
-        return self._api_url.format(self.kwargs_to_query_params(**merged_kwargs))
+        return f"{self._api_url}{path}{'?{}'.format(self.kwargs_to_query_params(**merged_kwargs))}"
 
     def filter_by_language(self):
         return {
@@ -166,3 +166,16 @@ lv.export_books_by_language()
                     f"{language.replace('/','_')}.json"  # This is just to avoid problems with Bisaya/Cebuano
                 )
             )
+
+    def search_by_title(self, title):
+        url = self.url_builder(f'/^{title}', )
+        response = http.get(url)
+        if response.ok:
+            return response.json()["books"]
+        return response.raise_for_status()
+
+    def download_book(self, book):
+        http.download_and_extract_zip(
+            book['url_zip_file'],
+            self.corpus_folder
+        )

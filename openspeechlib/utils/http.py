@@ -3,8 +3,12 @@ Utility functions for HTTP
 
 This will be used as proxy in case we don't want to rely on requests in the future
 """
+import os
 from urllib import parse
+import zipfile
 import requests
+
+CHUNK_SIZE = 128
 
 get = requests.get
 
@@ -28,3 +32,15 @@ assert offset[0] == "14450"
     """
     parsed_url = parse.urlparse(url)
     return parse.parse_qs(parsed_url.query).get(param)
+
+
+def download_and_extract_zip(url, destination, keep_zip=True):
+    response = get(url)
+    with open(f"{destination}.zip", 'wb') as zipped_corpus:
+        for chunk in response.iter_content(CHUNK_SIZE):
+            zipped_corpus.write(chunk)
+    with zipfile.ZipFile(f"{destination}.zip") as zip_file:
+        zip_file.extractall(destination)
+
+    if not keep_zip:
+        os.remove()

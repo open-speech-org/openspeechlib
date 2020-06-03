@@ -8,6 +8,10 @@
 |Length|17|
 |Speech Type| Spontaneous|
 | Annotation level| Word |
+|Format|SPH|
+|Sample Rate|16000|
+|Created by| Universidad Nacional Autonoma de Mexico |
+
 
 
 ## CITE
