@@ -11,7 +11,6 @@ CORPORA_FOLDER = ".openspeechlib/corpora"
 LAST_FETCHED_URL = "{}_last_fetched_url.txt"
 MAX_REQUESTS = 100
 PAGE_SIZE = 50
-CHUNK_SIZE = 128
 
 
 class BaseCorpusDownloader(metaclass=ABCMeta):

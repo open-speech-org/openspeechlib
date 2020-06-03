@@ -8,6 +8,9 @@
 |Speakers| - |
 |Speech Type| - |
 | Annotation Level | Utterance |
+|Format|WAV|
+|Sample Rate|16000|
+|Created by| Google |
 
 ## Cite
 

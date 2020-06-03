@@ -8,6 +8,9 @@
 |Speakers|50|
 |Speech Type| Read |
 |Annotation level| Phoneme |
+|Format|WAV|
+|Sample Rate|16000|
+|Created by| Universidad Nacional Autonoma de Mexico |
 
 
 ## CITE
