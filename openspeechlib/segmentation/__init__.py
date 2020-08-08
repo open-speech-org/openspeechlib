@@ -3,5 +3,5 @@ This module includes functionality to create segmentation in a speech signal usi
 """
 from . import (
     silence_segmentation,
-    dynamic_segmentator
+    dynamic_threshold
 )
