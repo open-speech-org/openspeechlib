@@ -62,6 +62,23 @@ def skip_adjacent_segmentator(procesed_signal, threshold, **kwargs):
     return silence_gaps
 
 
+def transform_signal_into_energy_bins(
+        signal,
+        frequency=16000,
+        window_width_size=0.025,
+        windows_offset_size=0.01,
+):
+    window_width = int(frequency * window_width_size)
+    windows_offset = int(frequency * windows_offset_size)
+    frames = extract_overlapping_frames_from_signal(
+        signal,
+        window_width,
+        windows_offset
+    )
+    windowed_frames = apply_window_function_to_frames(frames)
+    return power(windowed_frames, axis=1)
+
+
 def silence_segmentation(
         signal,
         frequency=16000,
@@ -88,6 +105,31 @@ def silence_segmentation(
     # interpolated_values = np.interp(np.arange(0, signal.shape[0]), frame_start_time, energy, )
     return segmentator(
         energy,
+        threshold,
+        **{
+            **extra_segmentator_args,
+            **{
+                "frequency": frequency,
+                "window_width_size": window_width_size,
+                "windows_offset_size": windows_offset_size,
+            }
+        }
+    )
+
+
+def silence_segmentation_for_energy_bins(
+        energy_bins,
+        frequency=16000,
+        threshold=0.03,
+        window_width_size=0.025,
+        windows_offset_size=0.01,
+        segmentator=default_segmentator,
+        extra_segmentator_args=None
+):
+    if extra_segmentator_args is None:
+        extra_segmentator_args = dict()
+    return segmentator(
+        energy_bins,
         threshold,
         **{
             **extra_segmentator_args,
