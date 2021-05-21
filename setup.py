@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="openspeechlib",
-    version="0.0.2.1",
+    version="0.0.2.2",
     description="Useful libraries to process and generate speech",
     long_description=readme(),
     long_description_content_type="text/markdown",
